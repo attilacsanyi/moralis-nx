@@ -58,7 +58,9 @@
           "browserTarget": "wallet:build:production"
         },
         "development": {
-          "browserTarget": "wallet:build:development"
+          "browserTarget": "wallet:build:development",
+          "host": "dev.localhost",
+          "port": 8401
         }
       },
       "defaultConfiguration": "development"
