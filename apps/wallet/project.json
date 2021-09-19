@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/wallet",
         "index": "apps/wallet/src/index.html",
@@ -16,13 +14,8 @@
         "polyfills": "apps/wallet/src/polyfills.ts",
         "tsConfig": "apps/wallet/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/wallet/src/favicon.ico",
-          "apps/wallet/src/assets"
-        ],
-        "styles": [
-          "apps/wallet/src/styles.scss"
-        ],
+        "assets": ["apps/wallet/src/favicon.ico", "apps/wallet/src/assets"],
+        "styles": ["apps/wallet/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -87,9 +80,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/wallet"
-      ],
+      "outputs": ["coverage/apps/wallet"],
       "options": {
         "jestConfig": "apps/wallet/jest.config.js",
         "passWithNoTests": true

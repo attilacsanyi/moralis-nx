@@ -4,10 +4,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
-    await TestBed.configureTestingModule({imports: [RouterTestingModule], 
-      declarations: [
-        AppComponent
-      ],
+    await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [AppComponent]
     }).compileComponents();
   });
 
@@ -27,6 +26,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Welcome to wallet!');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Welcome to wallet!'
+    );
   });
 });
