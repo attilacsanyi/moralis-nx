@@ -1,5 +1,5 @@
 {
-  "name": "moralis",
+  "name": "angular-moralis",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -10,6 +10,9 @@
     "lint": "nx lint",
     "ci": "npm run lint && npm run test && npm run build",
     "demo": "npm run build && lite-server -c bs-config.js",
+    "moralis-deploy": "moralis-admin-cli deploy -p dist/apps/wallet",
+    "moralis-undeploy": "moralis-admin-cli undeploy",
+    "deploy": "npm run build && npm run moralis-deploy",
     "format": "nx format:write"
   },
   "husky": {
@@ -60,6 +63,7 @@
     "jest": "27.0.3",
     "jest-preset-angular": "9.0.7",
     "lite-server": "2.6.1",
+    "moralis-admin-cli": "2.1.13",
     "prettier": "2.3.1",
     "pretty-quick": "3.1.1",
     "ts-jest": "27.0.3",

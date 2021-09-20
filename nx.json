@@ -1,5 +1,5 @@
 {
-  "npmScope": "moralis",
+  "npmScope": "angular-moralis",
   "affected": {
     "defaultBase": "main"
   },
