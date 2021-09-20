@@ -11,7 +11,14 @@ on:
   workflow_dispatch:
 
 env:
-  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+  # Nx Cloud
+  NX_CLOUD_DISTRIBUTED_EXECUTION: false
+
+  # Moralis
+  moralisApiKey: ${{ secrets.MORALIS_API_KEY }}
+  moralisApiSecret: ${{ secrets.MORALIS_API_SECRET }}
+  moralisSubdomain: ${{ secrets.MORALIS_SUBDOMAIN }}
+  folderPath: ${{ secrets.MORALIS_FOLDERPATH }}
 
 jobs:
   install:
@@ -80,3 +87,20 @@ jobs:
         run: |
           npm i
           npm run build
+
+  deploy:
+    needs: [lint, test, build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+
+      - name: Deploying...
+        run: |
+          npm i
+          npx moralis-admin-cli deploy -p "$env:moralisFolderPath" -d "$env:moralisSubdomain"
