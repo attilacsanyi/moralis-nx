@@ -12,7 +12,7 @@ on:
 
 env:
   # Nx Cloud
-  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+  NX_CLOUD_DISTRIBUTED_EXECUTION: false
 
   # Moralis
   moralisApiKey: ${{ secrets.MORALIS_API_KEY }}
