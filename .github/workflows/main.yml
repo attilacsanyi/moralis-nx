@@ -103,4 +103,4 @@ jobs:
       - name: Deploying...
         run: |
           npm i
-          moralis-admin-cli deploy -p "$env:moralisFolderPath" -d "$env:moralisSubdomain"
+          npx moralis-admin-cli deploy -p "$env:moralisFolderPath" -d "$env:moralisSubdomain"
