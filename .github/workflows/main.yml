@@ -1,18 +1,17 @@
-name: Wallet
+# Documentation
+# https://nx.app/docs/configuring-ci
+name: Distributed CI
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - main
-
-  workflow_dispatch:
 
 env:
   # Nx Cloud
-  NX_CLOUD_DISTRIBUTED_EXECUTION: false
+  # Requires Github Agents, see more: https://youtu.be/GT7XIwG1i5A?t=222
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true
 
   # Moralis
   moralisApiKey: ${{ secrets.MORALIS_API_KEY }}
@@ -21,86 +20,59 @@ env:
   folderPath: ${{ secrets.MORALIS_FOLDERPATH }}
 
 jobs:
-  install:
+  main:
     runs-on: ubuntu-latest
-
+    if: ${{ github.event_name != 'pull_request' }}
     steps:
       - uses: actions/checkout@v2
-
-      # https://github.com/marketplace/actions/setup-node-js-environment
-      - name: Setup node
-        uses: actions/setup-node@v2
+        name: Checkout [main]
+        with:
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: '14'
-          cache: 'npm'
+      - run: npm install
+      - run: npx nx-cloud start-ci-run
+      - run: npx nx affected --target=build --parallel --max-parallel=4
+      - run: npx nx affected --target=test --parallel --max-parallel=3
+      - run: npx nx affected --target=lint --parallel --max-parallel=2
+      - run: npx moralis-admin-cli deploy -p "$env:moralisFolderPath" -d "$env:moralisSubdomain"
+      - run: npx nx-cloud stop-all-agents
 
-      - name: Installing...
-        run: npm i
-
-  lint:
-    needs: install
+  pr:
     runs-on: ubuntu-latest
-
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: '14'
-          cache: 'npm'
+      - run: npm install
+      - run: npx nx-cloud start-ci-run
+      - run: npx nx affected --target=build --parallel --max-parallel=4
+      - run: npx nx affected --target=test --parallel --max-parallel=3
+      - run: npx nx affected --target=lint --parallel --max-parallel=2
+      - run: npx nx-cloud stop-all-agents
 
-      - name: Linting...
-        run: |
-          npm i
-          npm run lint
-
-  test:
-    needs: install
+  agents:
     runs-on: ubuntu-latest
-
+    name: Nx Agent
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        agent: [1, 2, 3, 4]
     steps:
       - uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: '14'
-          cache: 'npm'
-
-      - name: Testing...
-        run: |
-          npm i
-          npm run test
-
-  build:
-    needs: install
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          cache: 'npm'
-
-      - name: Building...
-        run: |
-          npm i
-          npm run build
-
-  deploy:
-    needs: [lint, test, build]
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          cache: 'npm'
-
-      - name: Deploying...
-        run: |
-          npm i
-          npx moralis-admin-cli deploy -p "$env:moralisFolderPath" -d "$env:moralisSubdomain"
+      - run: npm install
+      - name: Start Nx Agent ${{ matrix.agent }}
+        run: npx nx-cloud start-agent
