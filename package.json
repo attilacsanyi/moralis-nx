@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "ngcc --properties es2015 browser module main",
-    "wallet:start": "nx run web:serve",
-    "wallet:demo": "nx run web:build && lite-server -c bs-config-web.js",
+    "wallet:start": "nx run wallet:serve",
+    "wallet:demo": "nx run wallet:build && lite-server -c bs-config-wallet.js",
     "wallet:deploy": "moralis-admin-cli deploy -p dist/apps/wallet",
     "wallet:undeploy": "moralis-admin-cli undeploy",
     "format": "nx format:write",
