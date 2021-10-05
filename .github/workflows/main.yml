@@ -1,5 +1,6 @@
 # Documentation
 # https://nx.app/docs/configuring-ci
+# Tagging: https://github.com/nrwl/nx-tag-successful-ci-run
 name: Distributed CI
 
 on:
@@ -17,7 +18,7 @@ env:
   moralisApiKey: ${{ secrets.MORALIS_API_KEY }}
   moralisApiSecret: ${{ secrets.MORALIS_API_SECRET }}
   moralisSubdomain: ${{ secrets.MORALIS_SUBDOMAIN }}
-  folderPath: ${{ secrets.MORALIS_FOLDERPATH }}
+  moralisFolderPath: ${{ secrets.MORALIS_FOLDERPATH }}
 
 jobs:
   main:
@@ -38,7 +39,7 @@ jobs:
       - run: npx nx affected --target=build --parallel --max-parallel=4
       - run: npx nx affected --target=test --parallel --max-parallel=3
       - run: npx nx affected --target=lint --parallel --max-parallel=2
-      - run: npx moralis-admin-cli deploy -p "$env:moralisFolderPath" -d "$env:moralisSubdomain"
+      - run: npx moralis-admin-cli deploy -p ${moralisFolderPath} -d ${moralisSubdomain}
       - run: npx nx-cloud stop-all-agents
 
   pr:
