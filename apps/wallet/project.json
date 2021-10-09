@@ -87,6 +87,13 @@
         "jestConfig": "apps/wallet/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npx moralis-admin-cli deploy --moralisApiKey $moralisApiKey --moralisApiSecret $moralisApiSecret --moralisSubdomain $moralisSubdomain --folderPath $moralisFolderPath"
+      }
     }
   },
   "tags": []
