@@ -6,6 +6,8 @@
     "postinstall": "ngcc --properties es2015 browser module main",
     "wallet:start": "nx run wallet:serve",
     "wallet:demo": "nx run wallet:build && lite-server -c bs-config-wallet.js",
+    "wallet:deploy": "moralis-admin-cli deploy --moralisApiKey $moralisWalletApiKey --moralisApiSecret $moralisWalletApiSecret --moralisSubdomain qzs2nwemgmqa.usemoralis.com --folderPath dist/apps/wallet",
+    "wallet:undeploy": "moralis-admin-cli undeploy --moralisApiKey $moralisWalletApiKey --moralisApiSecret $moralisWalletApiSecret --moralisSubdomain qzs2nwemgmqa.usemoralis.com",
     "format": "nx format:write",
     "lint": "nx affected --target=lint --fix",
     "test": "nx affected --target=test",

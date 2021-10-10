@@ -92,7 +92,14 @@
       "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "npx moralis-admin-cli deploy --moralisApiKey $moralisApiKey --moralisApiSecret $moralisApiSecret --moralisSubdomain $moralisSubdomain --folderPath $moralisFolderPath"
+        "command": "npm run wallet:deploy"
+      }
+    },
+    "undeploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npm run wallet:undeploy"
       }
     }
   },

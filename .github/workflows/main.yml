@@ -15,10 +15,8 @@ env:
   NX_CLOUD_DISTRIBUTED_EXECUTION: true
 
   # Moralis
-  moralisApiKey: ${{ secrets.MORALIS_API_KEY }}
-  moralisApiSecret: ${{ secrets.MORALIS_API_SECRET }}
-  moralisSubdomain: ${{ secrets.MORALIS_SUBDOMAIN }}
-  moralisFolderPath: ${{ secrets.MORALIS_FOLDERPATH }}
+  moralisWalletApiKey: ${{ secrets.MORALIS_WALLET_API_KEY }}
+  moralisWalletApiSecret: ${{ secrets.MORALIS_WALLET_API_SECRET }}
 
 jobs:
   main:
