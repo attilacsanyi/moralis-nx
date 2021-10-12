@@ -41,3 +41,5 @@ Thumbs.db
 
 # Moralis
 .env
+**/**/deploy*.sh
+**/**/undeploy*.sh

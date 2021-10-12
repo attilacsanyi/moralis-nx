@@ -16,7 +16,15 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/wallet/src/favicon.ico", "apps/wallet/src/assets"],
         "styles": ["apps/wallet/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "allowedCommonJsDependencies": [
+          "hash.js",
+          "query-string",
+          "@walletconnect/encoding",
+          "@walletconnect/socket-transport",
+          "@walletconnect/window-metadata",
+          "@walletconnect/environment"
+        ]
       },
       "configurations": {
         "production": {
@@ -24,7 +32,7 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumError": "3mb"
             },
             {
               "type": "anyComponentStyle",
@@ -77,7 +85,8 @@
         "lintFilePatterns": [
           "apps/wallet/src/**/*.ts",
           "apps/wallet/src/**/*.html"
-        ]
+        ],
+        "maxWarnings": 0
       }
     },
     "test": {
