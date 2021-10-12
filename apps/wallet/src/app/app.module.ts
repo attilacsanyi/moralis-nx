@@ -1,13 +1,19 @@
+import { MoralisModule } from '@angular-moralis/moralis';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-
+import { environment } from '../environments/environment';
+import { AppComponent } from './app.component';
+import { UserComponent } from './user/user.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UserComponent],
   imports: [
     BrowserModule,
+    MoralisModule.forRoot({
+      moralisApiKey: environment.moralis.apiKey,
+      moralisServerUrl: environment.moralis.serverUrl,
+      moralisSecret: environment.moralis.secret
+    }),
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' })
   ],
   providers: [],

@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "root": "libs/moralis",
+  "sourceRoot": "libs/moralis/src",
+  "prefix": "angular-moralis",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/moralis"],
+      "options": {
+        "jestConfig": "libs/moralis/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/moralis/src/**/*.ts",
+          "libs/moralis/src/**/*.html"
+        ],
+        "maxWarnings": 0
+      }
+    }
+  },
+  "tags": []
+}

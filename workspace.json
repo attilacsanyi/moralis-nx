@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "moralis": "libs/moralis",
     "wallet": "apps/wallet",
     "wallet-e2e": "apps/wallet-e2e"
   },
