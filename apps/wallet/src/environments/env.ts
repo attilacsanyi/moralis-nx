@@ -4,9 +4,8 @@ export interface Env {
 
   moralis: {
     /** Moralis Application ID */
-    apiKey: string;
+    appId: string;
     /** Moralis Server url */
-    secret: string;
     serverUrl: string;
   };
 }
@@ -15,8 +14,7 @@ export const defaultEnv: Env = {
   production: false,
   env: 'dev',
   moralis: {
-    apiKey: '',
-    secret: '',
-    serverUrl: ''
+    appId: 'kRk92GrSHxsl9WySp3nCmO6TbpV7rY7gb1MIONS6',
+    serverUrl: 'https://gcnfwjhv70zi.grandmoralis.com:2053/server'
   }
 };

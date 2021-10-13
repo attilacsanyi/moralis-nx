@@ -10,9 +10,8 @@ import { UserComponent } from './user/user.component';
   imports: [
     BrowserModule,
     MoralisModule.forRoot({
-      moralisApiKey: environment.moralis.apiKey,
-      moralisServerUrl: environment.moralis.serverUrl,
-      moralisSecret: environment.moralis.secret
+      moralisAppId: environment.moralis.appId,
+      moralisServerUrl: environment.moralis.serverUrl
     }),
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' })
   ],

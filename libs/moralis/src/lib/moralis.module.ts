@@ -3,9 +3,8 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { Moralis } from 'moralis';
 
 export interface MoralisOptions {
-  moralisApiKey: string;
+  moralisAppId: string;
   moralisServerUrl: string;
-  moralisSecret: string;
 }
 
 @NgModule({
@@ -13,14 +12,11 @@ export interface MoralisOptions {
 })
 export class MoralisModule {
   static forRoot({
-    moralisApiKey,
-    moralisServerUrl,
-    moralisSecret
+    moralisAppId,
+    moralisServerUrl
   }: MoralisOptions): ModuleWithProviders<MoralisModule> {
     // Initialise Moralis
-    Moralis.enableEncryptedUser();
-    Moralis.secret = moralisSecret;
-    Moralis.initialize(moralisApiKey);
+    Moralis.initialize(moralisAppId);
     Moralis.serverURL = moralisServerUrl;
 
     return {
