@@ -1,7 +1,7 @@
-import { MoralisModule } from '@angular-moralis/moralis';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { MoralisModule } from '@moralis-nx/moralis';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';

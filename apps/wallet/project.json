@@ -2,7 +2,7 @@
   "projectType": "application",
   "root": "apps/wallet",
   "sourceRoot": "apps/wallet/src",
-  "prefix": "ac",
+  "prefix": "mnx",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

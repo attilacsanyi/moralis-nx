@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-moralis/moralis": ["libs/moralis/src/index.ts"],
+      "@moralis-nx/moralis": ["libs/moralis/src/index.ts"],
       "assert": ["./node_modules/assert"],
       "crypto": ["./node_modules/crypto-browserify"],
       "http": ["./node_modules/stream-http"],

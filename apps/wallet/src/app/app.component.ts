@@ -4,7 +4,7 @@ import { BehaviorSubject, from, ReplaySubject } from 'rxjs';
 import { first, map, share } from 'rxjs/operators';
 
 @Component({
-  selector: 'ac-root',
+  selector: 'mnx-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

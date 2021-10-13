@@ -2,7 +2,7 @@
   "projectType": "library",
   "root": "libs/moralis",
   "sourceRoot": "libs/moralis/src",
-  "prefix": "angular-moralis",
+  "prefix": "moralis-nx",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",

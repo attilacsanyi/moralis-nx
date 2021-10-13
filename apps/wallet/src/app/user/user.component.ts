@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Moralis } from 'moralis';
 
 @Component({
-  selector: 'ac-user',
+  selector: 'mnx-user',
   template: `
     <h2>User</h2>
     <details>
