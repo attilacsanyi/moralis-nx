@@ -9,6 +9,8 @@ on:
       - main
   pull_request:
 
+  workflow_dispatch
+
 env:
   # Nx Cloud
   # Requires Github Agents, see more: https://youtu.be/GT7XIwG1i5A?t=222

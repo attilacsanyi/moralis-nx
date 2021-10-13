@@ -17,6 +17,7 @@ export class MoralisModule {
     moralisServerUrl,
     moralisSecret
   }: MoralisOptions): ModuleWithProviders<MoralisModule> {
+    // Initialise Moralis
     Moralis.enableEncryptedUser();
     Moralis.secret = moralisSecret;
     Moralis.initialize(moralisApiKey);
