@@ -3,21 +3,20 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { Moralis } from 'moralis';
 
 export interface MoralisOptions {
-  moralisAppId: string;
-  moralisServerUrl: string;
+  serverUrl: string;
+  appId: string;
+  plugins?: { name: string; functions: string[] }[];
+  javascriptKey?: string;
+  masterKey?: string;
 }
 
 @NgModule({
   imports: [CommonModule]
 })
 export class MoralisModule {
-  static forRoot({
-    moralisAppId,
-    moralisServerUrl
-  }: MoralisOptions): ModuleWithProviders<MoralisModule> {
+  static forRoot(options: MoralisOptions): ModuleWithProviders<MoralisModule> {
     // Initialise Moralis
-    Moralis.initialize(moralisAppId);
-    Moralis.serverURL = moralisServerUrl;
+    Moralis.start(options);
 
     return {
       ngModule: MoralisModule,
