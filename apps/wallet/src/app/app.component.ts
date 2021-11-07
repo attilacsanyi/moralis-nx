@@ -1,7 +1,8 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { Moralis } from 'moralis';
-import { BehaviorSubject, from, ReplaySubject } from 'rxjs';
-import { first, map, share } from 'rxjs/operators';
+import { BehaviorSubject, from, Observable, ReplaySubject } from 'rxjs';
+import { first, map, share, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'mnx-root',
@@ -10,6 +11,15 @@ import { first, map, share } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'wallet';
+
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   private currentUserSubject = new BehaviorSubject(Moralis.User.current());
   private currentUser$ = this.currentUserSubject.asObservable().pipe(
