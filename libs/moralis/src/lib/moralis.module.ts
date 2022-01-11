@@ -16,7 +16,9 @@ export interface MoralisOptions {
 export class MoralisModule {
   static forRoot(options: MoralisOptions): ModuleWithProviders<MoralisModule> {
     // Initialise Moralis
-    Moralis.start(options);
+    Moralis.start(options).then(() =>
+      console.info('Moralis has been initialised.')
+    );
 
     return {
       ngModule: MoralisModule,
