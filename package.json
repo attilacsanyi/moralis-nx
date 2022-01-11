@@ -37,7 +37,7 @@
     "assert": "2.0.0",
     "crypto-browserify": "3.12.0",
     "https-browserify": "1.0.0",
-    "moralis": "0.0.97",
+    "moralis": "0.0.183",
     "os-browserify": "0.3.0",
     "rxjs": "7.4.0",
     "stream-browserify": "3.0.0",
@@ -75,11 +75,10 @@
     "jest": "27.2.3",
     "jest-preset-angular": "11.0.0",
     "lite-server": "2.6.1",
-    "moralis-admin-cli": "2.1.13",
+    "moralis-admin-cli": "2.1.16",
     "prettier": "2.3.1",
     "pretty-quick": "3.1.1",
     "ts-jest": "27.0.5",
     "typescript": "4.5.4"
   }
 }
-
