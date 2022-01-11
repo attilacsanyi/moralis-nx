@@ -24,6 +24,9 @@ export const materialModules = [
   MatCardModule
 ];
 
+// Environment variables
+const { appId, serverUrl } = environment.moralis;
+
 @NgModule({
   declarations: [AppComponent, UserComponent],
   imports: [
@@ -32,10 +35,9 @@ export const materialModules = [
     BrowserAnimationsModule,
 
     // Moralis
-    MoralisModule.forRoot({
-      appId: environment.moralis.appId,
-      serverUrl: environment.moralis.serverUrl
-    }),
+    MoralisModule.forRoot({ appId, serverUrl }),
+
+    // Router
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
 
     // Material
