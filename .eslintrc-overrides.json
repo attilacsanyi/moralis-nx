@@ -3,7 +3,7 @@
     {
       "files": ["*.ts"],
       "rules": {
-        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "no-console": ["error", { "allow": ["warn", "error", "info"] }],
         "no-restricted-syntax": [
           "error",
           {
