@@ -39,7 +39,7 @@ export class AppComponent {
       .pipe(first())
       .subscribe({
         next: loggedInUser => {
-          console.log('loggedInUser', loggedInUser);
+          console.info('loggedInUser', loggedInUser);
           this.currentUserSubject.next(loggedInUser);
         },
         error: (error: Error) => this.logError('loginWithMetamask error', error)
@@ -51,7 +51,7 @@ export class AppComponent {
       .pipe(first())
       .subscribe({
         next: loggedInUser => {
-          console.log('loggedInUser', loggedInUser);
+          console.info('loggedInUser', loggedInUser);
           this.currentUserSubject.next(loggedInUser);
         },
         error: (error: Error) =>
@@ -63,7 +63,7 @@ export class AppComponent {
     from(Moralis.User.logOut())
       .pipe(first())
       .subscribe(loggedOutUser => {
-        console.log('logout', loggedOutUser);
+        console.info('logout', loggedOutUser);
         this.currentUserSubject.next(undefined);
 
         // Disconnect Web3 wallet
